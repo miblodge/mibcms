@@ -1,4 +1,15 @@
 <?php
+/**
+ * Note: This auth module was written years ago when I first
+ * started this project using what must be by now an outdated
+ * version of Elgg. It may require some tweaking to get it
+ * working again, depending on how much has changed.
+ *
+ * If you do get it working again, please consider contributing
+ * your fix back to github. Same applies if you mod this to
+ * authenticate via other cms systems.
+ */
+
 	require_once('./auth/'.MIB_AUTH.'/config.php');
 	includeClass('class_authentication.php');
 
