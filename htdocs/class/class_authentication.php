@@ -35,9 +35,9 @@
 					break;
 				case 'config_admin':
 					if($this->config_owner) return true;
-					$admin_ids = explode(',',MIB_ADMIN_USERID);
+					$admin_ids = explode(',',MIB_HANDLER_USERID);
 					foreach($admin_ids as $admin_id) if($admin_id == $this->userid) return true;
-					$admin_names = explode(',',MIB_ADMIN_USERNAME);
+					$admin_names = explode(',',MIB_HANDLER_USERNAME);
 					foreach($admin_names as $admin_name) if($admin_name == $this->username) return true;
 					return false;
 					break;
