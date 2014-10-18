@@ -1,0 +1,36 @@
+Installation is fairly straight forward, except for creating users.
+
+1. Create and modify config file...
+* Make a copy of config/example_local.php called config/local.php
+* Fill in the database settings. 
+* It is probably best to override the default password salt.
+* Check in config/default.php to see if there is any other setting you want to tweak. 
+If so, add the line to config/local.php so it won't get overwritten on upgrade later.
+
+2. Configure you authentication file...
+* We'll assume you have left the default authentication of 'self' as 'Elgg' has not
+been tested for a few years.
+* Make a copy of auth/self/example_config called auth/self/config.php
+
+3. Open a browser to the site URL/install.php
+* Click create all the tables.
+
+4. Creating users...
+Here is where things get tricky. You'll need to insert two records 
+for each user (unless you got the Elgg auth option working somehow
+and authenticate from an Elgg install, and then you just need one).
+
+* Manually insert a record into the `user` table. Easy enough.
+* Manually insert a record into the `auth` table. More tricky as 
+you'll need to hash the password manually. Using the same salt.
+This version was written years ago so it still uses md5. I'll
+update that later, but for now create a temporary php file and
+get the hash like:
+
+$password ='whatever';
+$salt = 'whatever';
+echo md5($password.$salt);
+
+Yeah, yeah, I need to upgrade to something better than md5 and add
+user creation support and add the first user in the install script.
+I know...
