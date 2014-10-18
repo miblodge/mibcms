@@ -1,0 +1,1 @@
+<div class="wtg_warning"><?php echo $warning; ?></div>

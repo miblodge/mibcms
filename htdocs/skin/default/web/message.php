@@ -1,0 +1,1 @@
+<div class="wtg_message"><?php echo $message; ?></div>
