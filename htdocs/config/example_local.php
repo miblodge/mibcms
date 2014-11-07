@@ -13,13 +13,18 @@
 	// Optional Owner username or userid is always owner even if not set as such in database
 	if(!defined('MIB_ARCHON_USERNAME')) DEFINE('MIB_ARCHON_USERNAME', '');
 	if(!defined('MIB_ARCHON_USERID')) DEFINE('MIB_ARCHON_USERID', '');
+	if(!defined('MIB_ARCHON_PASSWORD')) DEFINE('MIB_ARCHON_PASSWORD', 'ufo666'); // Only used in setup
+	if(!defined('MIB_ARCHON_EMAIL')) DEFINE('MIB_ARCHON_EMAIL', ''); // Only used in setup
 
 	// Optional Admin usernames or userids are always set as admins even if not set as
 	// such in database.  Comma delimited list
 	if(!defined('MIB_HANDLER_USERNAME')) DEFINE('MIB_HANDLER_USERNAME', '');
 	if(!defined('MIB_HANDLER_USERID')) DEFINE('MIB_HANDLER_USERID', '');
+	if(!defined('MIB_ARCHON_PASSWORD')) DEFINE('MIB_ARCHON_PASSWORD', 'ufo523'); // Only used in setup
+	if(!defined('MIB_ARCHON_EMAIL')) DEFINE('MIB_ARCHON_EMAIL', ''); // Only used in setup
 
-	// Auth module to use
+
+// Auth module to use
 	//if(!defined('MIB_AUTH')) DEFINE('MIB_AUTH', 'self');
 
 	// If not logged in, redirect to url (leave blank for no redirect)...
