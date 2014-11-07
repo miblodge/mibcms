@@ -20,7 +20,6 @@
 		<field name="displayname" type="varchar(128)" />
 		<field name="email" type="varchar(256)" />
 		<field name="permission_level" type="int unsigned" notnull="true" default="4" />
-		<field name="user_object" type="longtext" notnull="true" />
 	</table> 
 	<table name="user_auth">		
 		<field name="id" type="int unsigned" notnull="true" auto_increment="true" />
@@ -28,7 +27,14 @@
 		<field name="username" type="varchar(32)" notnull="true" />
 		<field name="password" type="varchar(32)" notnull="true" />
 		<field name="reset" type="int unsigned" notnull="true" default="0" />
-	</table> 
+	</table>
+	<table name="user_reputation">
+		<field name="id" type="int unsigned" notnull="true" auto_increment="true" />
+		<field name="userid" type="int unsigned" notnull="true" />
+		<field name="discs" type="int unsigned" notnull="true" default="0" />
+		<field name="sex" type="int unsigned" notnull="true" default="0"/>
+		<field name="hex" type="int unsigned" notnull="true" default="0" />
+	</table>
 	<table name="user_session">		
 		<field name="id" type="int unsigned" notnull="true" auto_increment="true" />
 		<field name="userid" type="int unsigned" notnull="true" />

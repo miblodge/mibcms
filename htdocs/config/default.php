@@ -60,10 +60,11 @@ file only to explain what can be configured in local.php
 	// Optional Owner username or userid is always owner even if not set as such in database
 	if(!defined('MIB_ARCHON_USERNAME')) DEFINE('MIB_ARCHON_USERNAME', '');
 	if(!defined('MIB_ARCHON_USERID')) DEFINE('MIB_ARCHON_USERID', '');
+	if(!defined('MIB_ARCHON_PASSWORD')) DEFINE('MIB_ARCHON_PASSWORD', ''); // Only used in setup
+	if(!defined('MIB_ARCHON_EMAIL')) DEFINE('MIB_ARCHON_EMAIL', ''); // Only used in setup
 
 	// Optional Admin usernames or userids are always set as admins even if not set as
 	// such in database.  Comma delimited list
 	if(!defined('MIB_HANDLER_USERNAME')) DEFINE('MIB_ARCHON_USERNAME', '');
 	if(!defined('MIB_HANDLER_USERID')) DEFINE('MIB_ARCHON_USERID', '');
 
-?>

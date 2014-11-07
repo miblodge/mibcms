@@ -36,12 +36,22 @@
 			$this->issues = $issues;
 
 			if(empty($this->issues)) {
+				// Do we need to set up the first user?
+				$first_user_id = MIB_ARCHON_USERID;
+
+				if($this->auth->create_first_user) {
+					// Check if Archon user has been created.
+					if(!$this->auth->userExists($first_user_id)) {
+						$this->auth->createFirstUser();
+					}
+				}
+
 				// All done, so redirect to main page.
-				header('Location: index.php');
+				//header('Location: index.php');
 			} else {
 				if(!$this->auth->config_admin) {
 					//redirect to error.php as not admin
-					header('Location: error.php');					
+					//header('Location: error.php');
 				}
 			}
 		}

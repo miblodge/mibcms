@@ -4,9 +4,12 @@
 		public $title = 'Welcome';
 		public $search = 'EnigMagick';
 
+		/** @var MySQLDataBase */
 		public $db;
+		/** @var Authentication */
 		public $auth;
 
+		/** @var User  */
 		public $user;
 		public $character;
 		public $mode = 'welcome';

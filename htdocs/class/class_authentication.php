@@ -1,6 +1,7 @@
 <?php
 	class Authentication {
 		public $err = array();
+		public $create_first_user = false;
 
 		function __construct() {
 			if(!$this->logged_in) {
@@ -76,5 +77,17 @@
 		function getDisplayNameByID($db,$id) {
 			return 'Anon';
 		}
+
+		function userExists($id) {
+			return false;
+		}
+		function authExists($id) {
+			return false;
+		}
+		function createFirstUser() {
+			// Do what needs to be done to setup first user.
+		}
+		function createUser($username,$password,$email,$plevel) {
+			// Do what needs to be done to setup first user.
+		}
 	}
-?>

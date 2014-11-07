@@ -3,6 +3,7 @@
 
 	class SelfAuth extends Authentication {
 		public $user_data = null;
+		public $create_first_user = true;
 
 		function __construct() {
 			if(isset($_COOKIE[MIB_SESSION_COOKIE_NAME])) {
@@ -179,6 +180,55 @@ limit 1";
 			$users = MIB_DB_PREFIX . 'user';
 			$sql = "select displayname from ".$users." where id = ".$id;
 			return $db->getValue($sql);
+		}
+
+		function userExists($id) {
+			GLOBAL $db;
+
+			$users = MIB_DB_PREFIX . 'user';
+			$sql = "select count(*) from ".$users." where id = ".$id;
+			if($db->getValue($sql) == 0) return false;
+			else return true;
+		}
+
+		function authExists($id) {
+			GLOBAL $db;
+
+			$user_auth = MIB_DB_PREFIX . 'user_auth';
+			$sql = "select count(*) from ".$user_auth." where userid = ".$id;
+			if($db->getValue($sql) == 0) return false;
+			else return true;
+		}
+
+		function createFirstUser() {
+			// Do what needs to be done to setup first user.
+			$first_user_name = MIB_ARCHON_USERNAME;
+			$password = MIB_ARCHON_PASSWORD;
+			$email = MIB_ARCHON_EMAIL;
+
+			$this->createUser($first_user_name,$password,$email,1);
+		}
+
+		function createUser($username,$password,$email,$plevel=4,$reset=true) {
+			GLOBAL $db;
+
+			$users = MIB_DB_PREFIX . 'user';
+			$sql = "insert into ".$users." (displayname,email,permission_level)
+			values ('$username','$email',$plevel)";
+			$db->execute($sql);
+			$id = $db->getID();
+
+			if(!$this->authExists($id)) {
+				$pw_hash = md5($password.MIB_PW_SALT);
+				$user_auth = MIB_DB_PREFIX . 'user_auth';
+
+				if($reset) $reset_int =1;
+				else $reset_int=0;
+
+				$sql = "insert into ".$user_auth." (userid,username,password,reset)
+				values ($id,'$username','$pw_hash',$reset_int)";
+				$db->execute($sql);
+			}
 		}
 	}
 

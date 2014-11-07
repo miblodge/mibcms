@@ -45,4 +45,4 @@
 			return $auth->getDisplayNameByID($this->db,$this->id);
 		}
 	}
-?>
+
