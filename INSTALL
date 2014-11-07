@@ -4,6 +4,8 @@ Installation is fairly straight forward, except for creating users.
 * Make a copy of config/example_local.php called config/local.php
 * Fill in the database settings. 
 * It is probably best to override the default password salt.
+* Set up the default archon username,password and email constants, as these
+will be used to create the first user automatically.
 * Check in config/default.php to see if there is any other setting you want to tweak. 
 If so, add the line to config/local.php so it won't get overwritten on upgrade later.
 
@@ -14,8 +16,12 @@ been tested for a few years.
 
 3. Open a browser to the site URL/install.php
 * Click create all the tables.
+* Once all tables are created, the install script should automatically create
+the first user from the ARCHON constants in your config/local.php
 
-4. Creating users...
+4. You should now be able to visit URL/index.php and log in.
+
+5. Creating additional users...
 Here is where things get tricky. You'll need to insert two records 
 for each user (unless you got the Elgg auth option working somehow
 and authenticate from an Elgg install, and then you just need one).
@@ -32,5 +38,6 @@ $salt = 'whatever';
 echo md5($password.$salt);
 
 Yeah, yeah, I need to upgrade to something better than md5 and add
-user creation support and add the first user in the install script.
+user creation support.
+
 I know...
